@@ -1,10 +1,7 @@
 package org.affluentproductions.jdabase.api.command;
 
 import net.dv8tion.jda.api.MessageBuilder;
-import net.dv8tion.jda.api.entities.ChannelType;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.affluentproductions.jdabase.JDABase;
 import org.affluentproductions.jdabase.api.AffluentAdapter;
@@ -77,6 +74,14 @@ public abstract class AffluentCommand extends AffluentAdapter {
 
         public JDABase getJDABase() {
             return jdaBase;
+        }
+
+        public void reply(MessageEmbed messageEmbed) {
+            reply(messageEmbed, null, null);
+        }
+
+        public void reply(MessageEmbed messageEmbed, Consumer<Message> success, Consumer<Throwable> failure) {
+            channel.sendMessage(messageEmbed).queue(success, failure);
         }
 
         public void reply(Message message) {
