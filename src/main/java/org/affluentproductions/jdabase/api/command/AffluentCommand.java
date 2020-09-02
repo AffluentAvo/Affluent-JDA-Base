@@ -79,6 +79,14 @@ public abstract class AffluentCommand extends AffluentAdapter {
             return jdaBase;
         }
 
+        public void reply(Message message) {
+            reply(message, null, null);
+        }
+
+        public void reply(Message message, Consumer<Message> success, Consumer<Throwable> failure) {
+            channel.sendMessage(message).queue(success, failure);
+        }
+
         public void reply(String message) {
             reply(message, null, null);
         }
@@ -103,6 +111,11 @@ public abstract class AffluentCommand extends AffluentAdapter {
         public void reply(String[] messages, Consumer<Message> success, Consumer<Throwable> failure) {
             for (String message : messages)
                 channel.sendMessage(new MessageBuilder(message).build()).queue(success, failure);
+        }
+
+        public String[] getArgs() {
+            String[] splitted = messageReceivedEvent.getMessage().getContentRaw().split("\\s+");
+            return Arrays.copyOfRange(splitted, 1, splitted.length);
         }
 
         public AffluentCommand getCommand() {
