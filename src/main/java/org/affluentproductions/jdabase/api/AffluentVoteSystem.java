@@ -66,6 +66,10 @@ public class AffluentVoteSystem extends AffluentAdapter {
         return voted;
     }
 
+    public long getUntilVote(String userId) {
+        return votes.getOrDefault(userId, -1L);
+    }
+
     private void vote(String userId) {
         long now = System.currentTimeMillis();
         long t12h = 12 * 60 * 60 * 1000;

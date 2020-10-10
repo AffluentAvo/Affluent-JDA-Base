@@ -28,7 +28,6 @@ public class EventManager {
     }
 
     public void fireEvent(AffluentEvent affluentEvent) {
-        System.out.println("fired event " + affluentEvent.getClass().getName());
         try {
             if (executorService != null && !executorService.isShutdown()) {
                 executorService.execute(() -> handle(affluentEvent));

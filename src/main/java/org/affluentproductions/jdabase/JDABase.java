@@ -117,6 +117,13 @@ public class JDABase extends AffluentAdapter implements JDABaseImpl {
     }
 
     /**
+     * Set the JDA Base Command Listener
+     */
+    public void setCommandListener(CommandListener commandListener) {
+        this.commandListener = commandListener;
+    }
+
+    /**
      * Setup top.gg API
      *
      * @throws JDABException if top.gg token is not configured
