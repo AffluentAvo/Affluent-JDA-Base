@@ -10,7 +10,7 @@ This project is in a beta and waiting for contributions and improvements.
 
 * **Affluent Avo** - *Main Developer* - [AffluentAvo](https://github.com/AffluentAvo)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/AffluentAvo/Affluent-JDA-Base/contributors) who participated in this project.
 
 ## License
 
